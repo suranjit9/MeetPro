@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NavBar = () => {
   return (
@@ -23,6 +23,7 @@ const NavBar = () => {
         <SignedIn>
           <UserButton></UserButton>
         </SignedIn>
+
         <MobileNav />
       </div>
     </nav>
