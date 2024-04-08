@@ -1,5 +1,9 @@
 const HomePage = () => {
-  return <div className="text-5xl text-white">home</div>;
+  return (
+    <section className="flex size-full flex-col gap-10 text-white ">
+      <h1 className="text-3xl font-bold">home</h1>
+    </section>
+  );
 };
 
 export default HomePage;

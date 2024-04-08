@@ -22,7 +22,7 @@ export const siderBarLink = [
     {
         label: 'Personal Room',
         imgUrl: '/icons/add-personal.svg',
-        route: '/personal Room'
+        route: '/personalRoom'
     },
     
 ]
