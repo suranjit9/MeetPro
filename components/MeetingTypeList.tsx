@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import { Input } from "./ui/input";
 
 const MeetingTypeList = () => {
   const router = useRouter();
@@ -72,7 +73,7 @@ const MeetingTypeList = () => {
         img="/icons/add-meeting.svg"
         title="Nwe Meeting"
         description="Start an instant meeting"
-        handleClick={() => setMeetingState("isJoinMeeting")}
+        handleClick={() => setMeetingState("isInstantMeeting")}
         className="bg-orange-1"
       />
       <HomeCard
@@ -101,6 +102,7 @@ const MeetingTypeList = () => {
           isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
           title="Create Meeting"
+          buttonText=''
           handleClick={createdMeeting}
         >
           <div className="flex flex-col gap-2.5">
@@ -121,7 +123,7 @@ const MeetingTypeList = () => {
             </label>
             <DatePicker
               selected={values.dateTime}
-              onChange={(date) => setValues({ ...values, dateTime: date! })}
+              onChange={(date:any) => setValues({ ...values, dateTime: date! })}
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={30}
@@ -150,7 +152,21 @@ const MeetingTypeList = () => {
       <MeetingModal
         isOpen={meetingState === "isJoinMeeting"}
         onClose={() => setMeetingState(undefined)}
-        title="Start an instant meeting"
+        title="Type the Meeting Link"
+        className="text-center"
+        buttonText="Start Meeting"
+        handleClick={()=>router.push(values.link)}>
+           <Input
+          placeholder="Meeting link"
+          onChange={(e) => setValues({ ...values, link: e.target.value })}
+          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
+
+      </MeetingModal>
+      <MeetingModal
+        isOpen={meetingState === 'isInstantMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
         className="text-center"
         buttonText="Start Meeting"
         handleClick={createdMeeting}

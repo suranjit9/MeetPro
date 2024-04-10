@@ -20,13 +20,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LayoutList, Users } from "lucide-react";
 import { Button } from "./ui/button";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 // why use !! to convert string to boolean
 // 'personal' => !'personal'=>false=>!false=>true
 // undefined =>!undefined=?true=>false
 const MeetingRoom = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const isPerSonalRoom = !!searchParams.get("personal");
   const [layout, setLayout] = useState<CalllayoutType>("speaker-left");
@@ -62,7 +63,7 @@ const MeetingRoom = () => {
         </div>
       </div>
       <div className="fixed bottom-0 flex w-full items-center justify-center flex-wrap gap-2">
-        <CallControls />
+        <CallControls onLeave={()=>router.push('/')}/>
         <DropdownMenu>
           <div className="flex items-center">
             <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
