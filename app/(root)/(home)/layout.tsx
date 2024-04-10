@@ -1,6 +1,14 @@
 import NavBar from "@/components/NavBar";
 import SiderBar from "@/components/SiderBar";
+import { Metadata } from "next";
 import React from "react";
+export const metadata: Metadata = {
+  title: "MeetPro",
+  description: "MeetPro",
+  icons: {
+    icon: "/icons/logo.svg",
+  },
+};
 
 const Homelayout = ({ children }: { children: React.ReactNode }) => {
   return (
